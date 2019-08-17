@@ -6,6 +6,8 @@ import VideoList from './VideoList';
 class App extends React.Component {
     state = { videos: [], selectedVideo: null };
 
+    //When a search term is submitted by user, fetch YouTube API with search term
+    //Then set video state to be the API response
     onTermSubmit = async (term) => {
         const response = await youtube.get('/search', {
             params: {
@@ -16,15 +18,15 @@ class App extends React.Component {
         this.setState({ videos: response.data.items });
     };
 
-    onVideoSelect = () => {
-        
+    onVideoSelect = (video) => {
+        console.log('From the App!', video);
     }
 
     render() {
         return (
             <div className="ui container">
                 <SearchBar onTermSubmit={this.onTermSubmit} />
-                <VideoList videos={this.state.videos} /> 
+                <VideoList onVideoSelect={this.onVideoSelect} videos={this.state.videos} /> 
             </div>
         )
     }
