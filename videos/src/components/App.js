@@ -8,7 +8,7 @@ class App extends React.Component {
     state = { videos: [], selectedVideo: null };
 
     componentDidMount() {
-        
+        this.onTermSubmit('wolrd news');
     }
 
     //When a search term is submitted by user, fetch YouTube API with search term
