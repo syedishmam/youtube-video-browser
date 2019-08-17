@@ -3,10 +3,13 @@ import React from 'react';
 class SearchBar extends React.Component {
     state = { term: '' };
 
+    //Every time textfield input changes (user adds or deletes a character in it), update state
     onInputChange = (e) => {
         this.setState({ term: e.target.value });
     };
 
+    //When form is submitted, call onTermSubmit on the text in the textfield
+    //See App.js for onTermSubmit()
     onFormSubmit = (e) => {
         e.preventDefault();
 
